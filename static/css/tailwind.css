@@ -1,0 +1,11 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@100;200;300;400;600;700&display=swap');
+
+hr {
+    border-top: 2px solid #a2d2ff;
+}

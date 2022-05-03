@@ -1,0 +1,562 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="min-h-screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Kalkulatory</title>
+  </head>
+  <body class="box-border font-poppins min-h-screen bg-gray-200">
+    <nav class="h-20 w-full bg-white shadow">
+      <label
+        class="text-3xl xs:text-xl xs:leading-20 float-right leading-20 mr-10 cursor-pointer hidden md:block"
+      >
+        <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+      </label>
+      <label
+        class="text-3xl text-gray-500 leading-20 py-0 px-24 font-bold lg:pl-12 md:leading-20 md:text-2xl xs:text-base xs:leading-20 xs:px-9"
+        ><a href="{% url 'calculators:home' %}"
+          ><i class="fa-solid fa-calculator"></i> Kalkulatory</a
+        ></label
+      >
+      {% url 'calculators:home' as home %}
+      {% url 'calculators:BMI' as BMI %} 
+      {% url 'calculators:BMR' as BMR %}
+      <ul
+        class="float-right mr-5 md:fixed md:w-full md:h-screen md:bg-white md:top-20 md:left-[-100%] md:text-center md:transition-all"
+      >
+        <li
+          class="inline-block leading-20 my-0 mx-2 md:block md:my-10 md:mx-0 md:leading-7"
+        >
+          <a
+            class="text-lg hover:text-gray-500 hover:underline hover:underline-offset-4 lg:text-base md:text-lg{% if page_path == home %} text-gray-500 underline underline-offset-4{% endif %}"
+            href="{{ home }}"
+            >Strona główna</a
+          >
+        </li>
+        <li
+          class="inline-block leading-20 my-0 mx-2 md:block md:my-10 md:mx-0 md:leading-7"
+        >
+          <a
+            class="text-lg hover:text-gray-500 hover:underline hover:underline-offset-4 lg:text-base md:text-lg{% if page_path == BMI %} text-gray-500 underline underline-offset-4{% endif %}"
+            href="{{ BMI }}"
+            >Kalkulator BMI</a
+          >
+        </li>
+        <li
+          class="inline-block leading-20 my-0 mx-2 md:block md:my-10 md:mx-0 md:leading-7"
+        >
+          <a
+            class="text-lg hover:text-gray-500 hover:underline hover:underline-offset-4 lg:text-base md:text-lg{% if page_path == BMR %} text-gray-500 underline underline-offset-4{% endif %}"
+            href="{{ BMR }}"
+            >Kalkulator BMR</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    {% if calc_what == 'Home' %}
+    <div class="container mt-10">
+      <div class="my-5 ml-20 md:mx-auto w-9/12">
+        <h1 class="text-4xl mb-5 my-4 text-gray-500">
+          Kalkulator BMI - co to jest?
+        </h1>
+        <hr class="w-6/12 md:w-10/12" />
+        <div class="my-4">
+          <p class="my-4">
+            Kalkulator BMI jest narzędziem, które mówi, czy ważymy odpowiednio
+            do swojego wzrostu. Jest bardzo prosty w obsłudze, a normy pozwalają
+            na jednoznaczną interpretację wyników. W czasach, gdy nadmierna
+            troska o sylwetkę staje się problemem społecznym, kalkulator BMI
+            jest wiarygodnym wyznacznikiem prawidłowej wagi.
+          </p>
+          <p>
+            Kalkulator ma już prawie 200 lat. Opracował do 1832 roku Belg
+            Adolphe Quetelet. W 1972 roku weszło do użycia sformułowanie używane
+            do dziś: BMI, czyli „indeks masy ciała” (Body Mass Index)
+          </p>
+        </div>
+        <h1 class="text-4xl mb-5 my-4 text-gray-500">
+          Wskaźnik BMI - co to jest?
+        </h1>
+        <hr class="w-6/12 md:w-10/12" />
+        <div class="my-4">
+          <p class="my-4">
+            Wskaźnik BMI to stosunek masy ciała (wagi) do wzrostu. Niskie
+            wartości mówią o tym, że ważmy za mało, wysokie – że za dużo. Im
+            wyższy współczynnik BMI, tym wyższe ryzyko wystąpienia chorób
+            związanych z nadmierną masą ciała. Są to choroby serca, cukrzyca
+            typu 2, nadciśnienie, miażdżyca, kamicy żółciowej, zapalenia kości i
+            stawów, bezdechów sennych, a nawet niektórych nowotworów (np. jelita
+            grubego, piersi, endometrium czy pęcherzyka żółciowego).
+          </p>
+          <p>
+            Zbyt niski wskaźnik BMI także wiąże się z zagrożeniem zdrowia ze
+            względu na niedożywienie, które może prowadzić do zmniejszenia
+            odporności organizmu, apatii, zmniejszenia zdolności motorycznych,
+            objawów niedoborów witamin, utrudnionego gojenia się ran czy
+            występowania obrzęków. Warto jednak pamiętać, że nieprawidłowe BMI
+            jest tylko jednym z czynników podnoszących ryzyko wystąpienia
+            choroby. Ważne są także inne parametry, m.in. styl życia,
+            zbilansowana dieta czy stosowanie używek.
+          </p>
+        </div>
+        <h1 class="text-4xl mb-5 my-4 text-gray-500">
+          BMI - interpretacja wyników
+        </h1>
+        <hr class="w-6/12 md:w-10/12" />
+        <div class="mdd:ml-10 my-4 mdd:w-5/12 grid grid-cols-2 gap-4">
+          <div>< 16,0</div>
+          <div>wygłodzenie</div>
+          <div>16,0 - 16,9</div>
+          <div>wychudzenie</div>
+          <div>17,0 - 18,5</div>
+          <div>niedowaga</div>
+          <div>18,5 - 24,9</div>
+          <div>waga prawidłowa</div>
+          <div>25,0 - 29,9</div>
+          <div>nadwaga</div>
+          <div>30,0 - 34,9</div>
+          <div>otyłość I stopnia</div>
+          <div>35,0 - 39,9</div>
+          <div>otyłość II stopnia</div>
+          <div>≥ 40</div>
+          <div>otyłość III stopnia</div>
+        </div>
+        <button
+          type="button"
+          class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3"
+        >
+          <a href="{{ BMI }}">Oblicz swoje BMI<span class="ml-3">👉</span></a>
+        </button>
+        <h1 class="text-4xl mb-5 my-4 text-gray-500">
+          Kalkulator BMR - co to jest?
+        </h1>
+        <hr class="w-6/12 md:w-10/12" />
+        <div class="my-4">
+          <p class="my-4">
+            Kalkulator BMR (Basal Metabolic Rate) jest specjalnym wskaźnikiem
+            wykorzystywanym przy obliczeniu minimalnego dziennego
+            zapotrzebowania kalorycznego. Do obliczeń wykorzystywane są
+            indywidualne dane, w tym waga, wzrost, wiek oraz płeć. Ważne są
+            również dane dotyczące aktywności fizycznej oraz częstotliwości
+            wykonywania ćwiczeń.
+          </p>
+          <p>
+            Kalkulator BMR jest narzędziem, które zazwyczaj wykorzystywane jest
+            przez osoby, które chciałyby zmniejszyć wagę bądź zwiększyć masę.
+            Znając liczbę przyjmowanych kalorii, można indywidualnie ustalić,
+            czy powinniśmy przyjmować ich mniej bądź więcej, w zależności od
+            rezultatów, które chcemy osiągnąć.
+          </p>
+        </div>
+        <h1 class="text-4xl mb-5 my-4 text-gray-500">
+          Wskaźnik BMR - co to jest?
+        </h1>
+        <hr class="w-6/12 md:w-10/12" />
+        <div class="my-4">
+          <p class="my-4">
+            <span class="font-bold">Basal metabolic rate</span> – jest to
+            wskaźnik, dzięki któremu możemy się dowiedzieć jaka jest nasza
+            podstawowa przemiana materii (PPM), czyli ile kalorii „spalamy” w
+            ciągu 24 godzin, nie robiąc absolutnie nic, poza podtrzymywaniem
+            podstawowych funkcji życiowych. Gdybyś leżał w łóżku i patrzył w
+            sufit przez 24 godziny, Twoje ciało spaliłoby równowartość swojego
+            zapotrzebowania kalorycznego BMR w kaloriach.
+          </p>
+        </div>
+        <button
+          type="button"
+          class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3"
+        >
+          <a href="{{ BMR }}">Oblicz swoje BMR<span class="ml-3">👉</span></a>
+        </button>
+      </div>
+    </div>
+    {% elif calc_what == 'BMI' %}
+    <div class="container mt-10">
+      <div
+        class="bg-gray-300 w-4/6 md:w-11/12 md:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
+      >
+        <div class="my-auto ml-10">
+          <p class="md:text-xl md:font-bold text-6xl text-center">
+            Kalkulator BMI
+          </p>
+          <p class="md:text-xs text-xl text-center">
+            Skorzystaj z kalukulatora aby obliczyć swoje BMI
+          </p>
+        </div>
+        <div class="my-auto">
+          <img
+            src="{% static 'img/BMI_calculator.png' %}"
+            alt=""
+            class="w-32 md:w-20 mx-auto"
+          />
+        </div>
+      </div>
+      {% if bmi %}
+      <div
+        class="text-center mt-4 md:text-2xl text-3xl text-gray-500 w-full md:max-w-sm max-w-lg mx-auto my-10 mdd:border-2 mdd:shadow mdd:p-10 rounded"
+      >
+        <h2>Twój wskaźnik masy ciała wynosi:</h2>
+        <h2
+          class="my-3 {% if bmi > 18.5 and bmi < 24.99 %}text-lime-500{% elif bmi > 25 and bmi < 29.99 %}text-orange-500 {% else %}text-red-600 {% endif %}"
+        >
+          {% if bmi > 18.5 and bmi < 24.99 %}
+          {{ bmi }} 🔥 
+          {% else %} 
+          {{ bmi }}
+          {% endif %}
+        </h2>
+        <h2>Twoje BMI wskazuje na:</h2>
+        <h2
+          class="my-3 {% if bmi > 18.5 and bmi < 24.99 %}text-lime-500{% elif bmi > 25 and bmi < 29.99 %}text-orange-500 {% else %}text-red-600 {% endif %}"
+        >
+          {% if bmi > 18.5 and bmi < 24.99 %}
+          {{ state }} 🔥
+          {% else %} 
+          {{ state }}
+          {% endif %}
+        </h2>
+        <button
+          class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+        >
+          <a href=""
+            >Oblicz jescze raz <i class="fa-solid fa-arrow-rotate-right"></i
+          ></a>
+        </button>
+      </div>
+      {% else %}
+      <form
+        method="POST"
+        class="w-full md:max-w-sm max-w-lg mx-auto my-10 mdd:border-2 mdd:shadow mdd:p-10 rounded"
+      >
+        {% csrf_token %}
+        <!-- Weight input-->
+        <div class="text-center flex items-center mb-6">
+          <div class="mdd:w-1/3 mx-auto">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+              for="weight"
+            >
+              Waga
+            </label>
+          </div>
+          <div class="mdd:w-2/3 mx-auto">
+            <input
+              class="bg-gray-300 appearance-none border-2 border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="weight"
+              name="weight"
+              type="number"
+              placeholder="Podaj swoją wagę w kg..."
+              required="required"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <!-- Height input-->
+        <div class="text-center flex items-center mb-6">
+          <div class="mdd:w-1/3 mx-auto">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+              for="height"
+            >
+              Wzrost
+            </label>
+          </div>
+          <div class="mdd:w-2/3 mx-auto">
+            <input
+              class="bg-gray-300 appearance-none border-2 border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="height"
+              name="height"
+              type="number"
+              placeholder="Podaj swój wzrost w cm..."
+              required="required"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="mdd:flex mdd:items-center md:mx-auto">
+          <div class="w-full md:items-center">
+            <button
+              class="w-full md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              type="submit"
+              action="{% url 'calculators:BMI' %}"
+            >
+              Oblicz
+            </button>
+          </div>
+        </div>
+      </form>
+      {% endif %}
+    </div>
+    {% else %}
+    <div class="container mt-10">
+      <div
+        class="bg-gray-300 w-4/6 md:w-11/12 md:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
+      >
+        <div class="my-auto ml-10">
+          <p class="md:text-xl md:font-bold text-6xl text-center">
+            Kalkulator BMR
+          </p>
+          <p class="md:text-xs text-xl text-center">
+            Skorzystaj z kalukulatora aby obliczyć swoje BMR
+          </p>
+        </div>
+        <div class="my-auto">
+          <img
+            src="{% static 'img/BMR_calculator.png' %}"
+            alt=""
+            class="w-32 md:w-20 mx-auto"
+          />
+        </div>
+      </div>
+
+      {% if bmr %}
+      <div
+        class="text-center mt-4 md:text-2xl text-3xl text-gray-500 w-full md:max-w-sm max-w-lg mx-auto my-10 mdd:border-2 mdd:shadow mdd:p-10 rounded"
+      >
+        <h2>Twoja podstawowa przemiana materii wynosi:</h2>
+        <h2 class="my-3">🥕 {{ base_bmr }} kcal 🥕</h2>
+        <h2>Aby {{ goal_form }} {{ correct_form }} dostarczać organizmowi:</h2>
+        <h2 class="my-3">🍎 {{ bmrgoal }} kcal 🍎</h2>
+        <button
+          class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+        >
+          <a href=""
+            >Oblicz jescze raz <i class="fa-solid fa-arrow-rotate-right"></i
+          ></a>
+        </button>
+      </div>
+      {% else %}
+      <form
+        method="POST"
+        class="w-full md:max-w-sm max-w-lg mx-auto my-10 mdd:border-2 mdd:shadow mdd:p-10 rounded"
+      >
+        {% csrf_token %}
+        <div class="flex justify-center mb-6 text-gray-500">
+          <div class="mdd:w-1/3">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+            >
+              Płeć
+            </label>
+          </div>
+          <!-- Gender radio -->
+          <div class="mdd:w-1/3 form-check form-check-inline">
+            <input
+              class="md:ml-8 form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-300 checked:border-gray-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              type="radio"
+              name="gender"
+              id="inlineRadio1"
+              value="W"
+              required
+            />
+            <label
+              class="form-check-label inline-block text-gray-800"
+              for="inlineRadio10"
+              >Kobieta</label
+            >
+          </div>
+          <div class="mdd:w-1/3 form-check form-check-inline">
+            <input
+              class="md:ml-5 form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-300 checked:border-gray-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              type="radio"
+              name="gender"
+              id="inlineRadio2"
+              value="M"
+            />
+            <label
+              class="form-check-label inline-block text-gray-800"
+              for="inlineRadio20"
+              >Mężczyzna</label
+            >
+          </div>
+        </div>
+        <!-- Weight input-->
+        <div class="text-center flex items-center mb-6">
+          <div class="mdd:w-1/3 mx-auto">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+              for="weight"
+            >
+              Waga
+            </label>
+          </div>
+          <div class="mdd:w-2/3 mx-auto">
+            <input
+              class="bg-gray-300 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="weight"
+              name="weight"
+              type="number"
+              placeholder="Podaj swoją wagę w kg..."
+              required="required"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <!-- Height input-->
+        <div class="text-center flex items-center mb-6">
+          <div class="mdd:w-1/3 mx-auto">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+              for="height"
+            >
+              Wzrost
+            </label>
+          </div>
+          <div class="mdd:w-2/3 mx-auto">
+            <input
+              class="bg-gray-300 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="height"
+              name="height"
+              type="number"
+              placeholder="Podaj swój wzrost w cm..."
+              required="required"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <!-- Age input-->
+        <div class="text-center flex items-center mb-6">
+          <div class="mdd:w-1/3 mx-auto">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+              for="age"
+            >
+              Wiek
+            </label>
+          </div>
+          <div class="mdd:w-2/3 mx-auto">
+            <input
+              class="bg-gray-300 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="age"
+              name="age"
+              type="number"
+              placeholder="Podaj swój wiek..."
+              required="required"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <div class="text-center flex items-center mb-6">
+          <div class="mdd:w-1/3 mx-auto">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+              for="activity"
+            >
+              Aktywność Fizyczna
+            </label>
+          </div>
+          <div class="mdd:w-2/3 mx-auto">
+            <select
+              class="bg-gray-300 border-2 border-gray-200 rounded md:w-10/12 w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
+              name="activity"
+              id="activity"
+            >
+              <option value="vl1">
+                Znikoma(Siedząca praca, lekkie prace domowe)
+              </option>
+              <option value="vl2">
+                Bardzo niska(Lekka praca, ćwiczenia raz na tydzień)
+              </option>
+              <option value="med">
+                Umiarkowana(ćwiczenia 2/3 razy w tygodniu)
+              </option>
+              <option value="vh1">
+                Duża(ciężki trening kilka razy w tygodniu)
+              </option>
+              <option value="vh2">
+                Bardzo duża(co najmniej 4 ciężkie treningi w tygodniu, ciężka
+                praca fizyczna)
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-center flex items-center mb-6">
+          <div class="mdd:w-1/3 mx-auto">
+            <label
+              class="block text-gray-500 font-bold mdd:text-left mb-1 mdd:mb-0 pr-4"
+              for="goal"
+            >
+              Planuje
+            </label>
+          </div>
+          <div class="mdd:w-2/3 mx-auto">
+            <select
+              class="bg-gray-300 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
+              name="goal"
+              id="goal"
+            >
+              <option value="lose">chcę schudnąć</option>
+              <option value="gain">chcę przytyć</option>
+              <option value="keep">chcę utrzymać wagę</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="mdd:flex mdd:items-center md:mx-auto">
+          <div class="w-full md:items-center">
+            <button
+              class="w-full md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              type="submit"
+              action="{% url 'calculators:BMI' %}"
+            >
+              Oblicz
+            </button>
+          </div>
+        </div>
+      </form>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="bg-white shadow flex sticky top-[100vh] p-4 text-gray-500">
+      <span class="text-sm mx-auto text-center"
+        >© 2022 <a href="#" class="hover:underline">Patryk Brzozowski</a>. All
+        Rights Reserved.</span
+      >
+    </footer>
+
+    <script>
+      function Menu(e) {
+        let list = document.querySelector('ul');
+        let diver = document.getElementById('nav');
+        e.name === 'menu'
+          ? ((e.name = 'close'),
+            list.classList.add('md:left-0'),
+            list.classList.remove('md:left-[-100%]'))
+          : ((e.name = 'menu'),
+            list.classList.remove('md:left-0'),
+            list.classList.add('md:left-[-100%]'));
+      }
+    </script>
+  </body>
+</html>
