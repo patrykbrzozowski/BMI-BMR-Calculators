@@ -1009,7 +1009,7 @@ hr {
   --tw-ring-color: rgb(147 197 253 / var(--tw-ring-opacity));
 }
 
-@media (max-width: 345px) {
+@media (max-width: 386px) {
   .xs\:px-9 {
     padding-left: 2.25rem;
     padding-right: 2.25rem;
@@ -1045,6 +1045,10 @@ hr {
 
   .md\:left-0 {
     left: 0px;
+  }
+
+  .md\:float-left {
+    float: left;
   }
 
   .md\:my-10 {
