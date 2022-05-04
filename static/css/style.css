@@ -1150,6 +1150,10 @@ hr {
     margin-right: auto;
   }
 
+  .lg\:w-28 {
+    width: 7rem;
+  }
+
   .lg\:w-24 {
     width: 6rem;
   }
