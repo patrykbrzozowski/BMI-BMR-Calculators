@@ -1009,12 +1009,23 @@ hr {
   --tw-ring-color: rgb(147 197 253 / var(--tw-ring-opacity));
 }
 
-@media (max-width: 386px) {
-  .xs\:px-3 {
+@media (max-width: 344px) {
+  .xxs\:px-3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 
+  .xxs\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .xxs\:font-normal {
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 386px) {
   .xs\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
