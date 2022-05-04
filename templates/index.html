@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" class="min-h-screen">
+<html lang="pl" class="min-h-screen">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,6 +22,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- favicon-16x16.png - The classic favicon, displayed in the tabs. -->
+    <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}" sizes="16x16">
+    <!-- favicon-32x32.png - For Safari on Mac OS. -->
+    <link rel="icon" type="image/png" href="{% static 'img/icon32.png' %}" sizes="32x32">
     <title>Kalkulatory</title>
   </head>
   <body class="box-border font-poppins min-h-screen bg-gray-200">
@@ -124,7 +128,7 @@
         </h1>
         <hr class="w-6/12 md:w-10/12" />
         <div class="mdd:ml-10 my-4 mdd:w-5/12 grid grid-cols-2 gap-4">
-          <div>< 16,0</div>
+          <div>&lt; 16,0</div>
           <div>wygłodzenie</div>
           <div>16,0 - 16,9</div>
           <div>wychudzenie</div>
@@ -141,12 +145,7 @@
           <div>≥ 40</div>
           <div>otyłość III stopnia</div>
         </div>
-        <button
-          type="button"
-          class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3"
-        >
-          <a href="{{ BMI }}">Oblicz swoje BMI<span class="ml-3">👉</span></a>
-        </button>
+        <a class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3" href="{{ BMI }}">Oblicz swoje BMI<span class="ml-3">👉</span></a>
         <h1 class="text-4xl mb-5 my-4 text-gray-500">
           Kalkulator BMR - co to jest?
         </h1>
@@ -183,32 +182,27 @@
             zapotrzebowania kalorycznego BMR w kaloriach.
           </p>
         </div>
-        <button
-          type="button"
-          class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3"
-        >
-          <a href="{{ BMR }}">Oblicz swoje BMR<span class="ml-3">👉</span></a>
-        </button>
+        <a class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3" href="{{ BMR }}">Oblicz swoje BMR<span class="ml-3">👉</span></a>
       </div>
     </div>
     {% elif calc_what == 'BMI' %}
     <div class="container mt-10">
       <div
-        class="bg-gray-300 w-4/6 md:w-11/12 md:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
+        class="bg-gray-300 w-4/6 md:w-11/12 lg:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
       >
         <div class="my-auto ml-10">
-          <p class="md:text-xl md:font-bold text-6xl text-center">
+          <p class="md:text-xl lg:text-3xl md:font-bold text-6xl text-center">
             Kalkulator BMI
           </p>
-          <p class="md:text-xs text-xl text-center">
+          <p class="md:text-xs lg:text-lg text-xl text-center">
             Skorzystaj z kalukulatora aby obliczyć swoje BMI
           </p>
         </div>
         <div class="my-auto">
           <img
             src="{% static 'img/BMI_calculator.png' %}"
-            alt=""
-            class="w-32 md:w-20 mx-auto"
+            alt="Kalkulator BMI"
+            class="w-32 md:w-20 lg:w-28 mx-auto"
           />
         </div>
       </div>
@@ -236,13 +230,7 @@
           {{ state }}
           {% endif %}
         </h2>
-        <button
-          class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-        >
-          <a href=""
-            >Oblicz jescze raz <i class="fa-solid fa-arrow-rotate-right"></i
-          ></a>
-        </button>
+        <a class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" href="">Oblicz jeszcze raz <i class="fa-solid fa-arrow-rotate-right"></i></a>
       </div>
       {% else %}
       <form
@@ -302,7 +290,7 @@
             <button
               class="w-full md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
-              action="{% url 'calculators:BMI' %}"
+              data-action="{% url 'calculators:BMI' %}"
             >
               Oblicz
             </button>
@@ -314,21 +302,21 @@
     {% else %}
     <div class="container mt-10">
       <div
-        class="bg-gray-300 w-4/6 md:w-11/12 md:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
+      class="bg-gray-300 w-4/6 md:w-11/12 lg:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
       >
         <div class="my-auto ml-10">
-          <p class="md:text-xl md:font-bold text-6xl text-center">
+          <p class="md:text-xl lg:text-3xl md:font-bold text-6xl text-center">
             Kalkulator BMR
           </p>
-          <p class="md:text-xs text-xl text-center">
+          <p class="md:text-xs lg:text-lg text-xl text-center">
             Skorzystaj z kalukulatora aby obliczyć swoje BMR
           </p>
         </div>
         <div class="my-auto">
           <img
             src="{% static 'img/BMR_calculator.png' %}"
-            alt=""
-            class="w-32 md:w-20 mx-auto"
+            alt="Kalkulator BMR"
+            class="w-32 md:w-20 lg:w-24 mx-auto"
           />
         </div>
       </div>
@@ -341,13 +329,7 @@
         <h2 class="my-3">🥕 {{ base_bmr }} kcal 🥕</h2>
         <h2>Aby {{ goal_form }} {{ correct_form }} dostarczać organizmowi:</h2>
         <h2 class="my-3">🍎 {{ bmrgoal }} kcal 🍎</h2>
-        <button
-          class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-        >
-          <a href=""
-            >Oblicz jescze raz <i class="fa-solid fa-arrow-rotate-right"></i
-          ></a>
-        </button>
+        <a class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" href="">Oblicz jeszcze raz <i class="fa-solid fa-arrow-rotate-right"></i></a>
       </div>
       {% else %}
       <form
@@ -369,13 +351,13 @@
               class="md:ml-8 form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-300 checked:border-gray-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
               type="radio"
               name="gender"
-              id="inlineRadio1"
+              id="woman"
               value="W"
               required
             />
             <label
               class="form-check-label inline-block text-gray-800"
-              for="inlineRadio10"
+              for="woman"
               >Kobieta</label
             >
           </div>
@@ -384,12 +366,12 @@
               class="md:ml-5 form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-300 checked:border-gray-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
               type="radio"
               name="gender"
-              id="inlineRadio2"
+              id="man"
               value="M"
             />
             <label
               class="form-check-label inline-block text-gray-800"
-              for="inlineRadio20"
+              for="man"
               >Mężczyzna</label
             >
           </div>
@@ -526,7 +508,7 @@
             <button
               class="w-full md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
-              action="{% url 'calculators:BMI' %}"
+              data-action="{% url 'calculators:BMI' %}"
             >
               Oblicz
             </button>
