@@ -302,7 +302,7 @@
             <button
               class="w-full md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
-              action="{% url 'calculators:BMI' %}"
+              data-action="{% url 'calculators:BMI' %}"
             >
               Oblicz
             </button>
@@ -369,13 +369,13 @@
               class="md:ml-8 form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-300 checked:border-gray-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
               type="radio"
               name="gender"
-              id="inlineRadio1"
+              id="woman"
               value="W"
               required
             />
             <label
               class="form-check-label inline-block text-gray-800"
-              for="inlineRadio10"
+              for="woman"
               >Kobieta</label
             >
           </div>
@@ -384,12 +384,12 @@
               class="md:ml-5 form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-gray-300 checked:border-gray-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
               type="radio"
               name="gender"
-              id="inlineRadio2"
+              id="man"
               value="M"
             />
             <label
               class="form-check-label inline-block text-gray-800"
-              for="inlineRadio20"
+              for="man"
               >Mężczyzna</label
             >
           </div>
@@ -526,7 +526,7 @@
             <button
               class="w-full md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
-              action="{% url 'calculators:BMI' %}"
+              data-action="{% url 'calculators:BMI' %}"
             >
               Oblicz
             </button>
