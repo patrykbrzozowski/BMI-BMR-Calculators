@@ -1010,9 +1010,9 @@ hr {
 }
 
 @media (max-width: 386px) {
-  .xs\:px-9 {
-    padding-left: 2.25rem;
-    padding-right: 2.25rem;
+  .xs\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .xs\:text-xl {
