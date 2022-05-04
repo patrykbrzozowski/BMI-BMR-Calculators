@@ -141,14 +141,7 @@
           <div>≥ 40</div>
           <div>otyłość III stopnia</div>
         </div>
-        <form class="inline" action="{{ BMI }}" method="get">
-          <button
-            type="button"
-            class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3"
-          >
-            Oblicz swoje BMI<span class="ml-3">👉</span>
-          </button>
-        </form>
+        <a class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3" href="{{ BMI }}">Oblicz swoje BMI<span class="ml-3">👉</span></a>
         <h1 class="text-4xl mb-5 my-4 text-gray-500">
           Kalkulator BMR - co to jest?
         </h1>
@@ -185,14 +178,7 @@
             zapotrzebowania kalorycznego BMR w kaloriach.
           </p>
         </div>
-        <form class="inline" action="{{ BMR }}" method="get">
-          <button
-            type="button"
-            class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3"
-          >
-            Oblicz swoje BMR<span class="ml-3">👉</span>
-          </button>
-        </form>
+        <a class="text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 my-3" href="{{ BMR }}">Oblicz swoje BMR<span class="ml-3">👉</span></a>
       </div>
     </div>
     {% elif calc_what == 'BMI' %}
@@ -240,13 +226,7 @@
           {{ state }}
           {% endif %}
         </h2>
-        <form class="inline" action="" method="get">
-          <button
-            class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-          >
-            Oblicz jeszcze raz <i class="fa-solid fa-arrow-rotate-right"></i>
-          </button>
-        </form>
+        <a class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" href="">Oblicz jeszcze raz <i class="fa-solid fa-arrow-rotate-right"></i></a>
       </div>
       {% else %}
       <form
@@ -345,13 +325,7 @@
         <h2 class="my-3">🥕 {{ base_bmr }} kcal 🥕</h2>
         <h2>Aby {{ goal_form }} {{ correct_form }} dostarczać organizmowi:</h2>
         <h2 class="my-3">🍎 {{ bmrgoal }} kcal 🍎</h2>
-        <form class="inline" action="" method="get">
-          <button
-            class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-          >
-            Oblicz jeszcze raz <i class="fa-solid fa-arrow-rotate-right"></i>
-          </button>
-        </form>
+        <a class="w-full text-xl md:w-10/12 md:ml-5 mdd:ml-10 lgd:ml-0 bg-gray-300 hover:bg-gray-400 text-gray-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" href="">Oblicz jeszcze raz <i class="fa-solid fa-arrow-rotate-right"></i></a>
       </div>
       {% else %}
       <form
