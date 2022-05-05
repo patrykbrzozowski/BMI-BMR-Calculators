@@ -1025,15 +1025,15 @@ hr {
   --tw-ring-color: rgb(147 197 253 / var(--tw-ring-opacity));
 }
 
-@media (max-width: 344px) {
-  .xxs\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+@media (max-width: 362px) {
+  .xxs\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
-  .xxs\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+  .xxs\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 
   .xxs\:font-normal {
@@ -1042,6 +1042,11 @@ hr {
 }
 
 @media (max-width: 386px) {
+  .xs\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .xs\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
