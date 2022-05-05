@@ -518,13 +518,25 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: static;
 }
 
+.relative {
+  position: relative;
+}
+
 .sticky {
   position: -webkit-sticky;
   position: sticky;
 }
 
+.top-0 {
+  top: 0px;
+}
+
 .top-\[100vh\] {
   top: 100vh;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .float-right {
@@ -715,6 +727,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-4 {
   gap: 1rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .rounded-full {
