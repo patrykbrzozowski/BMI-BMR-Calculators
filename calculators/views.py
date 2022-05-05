@@ -60,15 +60,15 @@ def BMR_calculator(request):
             correct_form = 'powinnaś'
 
         if activity == 'vl1':
-            bmr *= 1.2
+            bmr *= 1.3
         elif activity == 'vl2':
-            bmr *= 1.375
+            bmr *= 1.5
         elif activity == 'med':
-            bmr *= 1.55
+            bmr *= 1.7
         elif activity == 'vh1':
-            bmr *= 1.725
-        else:
             bmr *= 1.9
+        else:
+            bmr *= 2.3
 
         if goal == 'lose':
             bmrgoal = bmr - 300
