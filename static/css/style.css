@@ -1031,6 +1031,10 @@ hr {
     padding-right: 2rem;
   }
 
+  .xxs\:pl-8 {
+    padding-left: 2rem;
+  }
+
   .xxs\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -1077,10 +1081,6 @@ hr {
 
   .md\:left-0 {
     left: 0px;
-  }
-
-  .md\:float-left {
-    float: left;
   }
 
   .md\:my-10 {
@@ -1141,11 +1141,6 @@ hr {
   .md\:bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  }
-
-  .md\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
   }
 
   .md\:text-center {
