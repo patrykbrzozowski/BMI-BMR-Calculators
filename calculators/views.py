@@ -84,7 +84,7 @@ def BMR_calculator(request):
         context['bmrgoal'] = int(bmrgoal)
         context['goal'] = goal
         context['correct_form'] = correct_form
-        context['base_bmr'] = base_bmr
+        context['base_bmr'] = int(base_bmr)
         context['goal_form'] = goal_form
     
     context['calc_what'] = 'BMR'

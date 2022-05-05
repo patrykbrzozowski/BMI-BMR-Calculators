@@ -29,14 +29,14 @@
     <title>Kalkulatory</title>
   </head>
   <body class="box-border font-poppins min-h-screen bg-gray-200">
-    <nav class="h-20 w-full bg-white shadow">
+    <nav class="h-20 w-full bg-white shadow sticky top-0 z-50">
       <label
         class="text-3xl xs:text-xl xs:leading-20 float-right leading-20 mr-10 cursor-pointer hidden md:block"
       >
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
       </label>
       <label
-        class="md:float-left text-3xl text-gray-500 leading-20 py-0 px-24 md:px-16 xxs:px-3 xxs:text-sm xxs:font-normal font-bold lg:pl-12 md:leading-20 md:text-2xl xs:text-base xs:leading-20 "
+        class="text-3xl text-gray-500 leading-20 py-0 px-24 font-bold lg:pl-12 xxs:pl-8 md:leading-20 md:text-2xl xxs:px-8 xxs:text-xs xxs:font-normal xs:text-base xs:leading-20 xs:px-8"
         ><a href="{% url 'calculators:home' %}"
           ><i class="fa-solid fa-calculator"></i> Kalkulatory</a
         ></label
@@ -78,7 +78,7 @@
     </nav>
 
     {% if calc_what == 'Home' %}
-    <div class="container mt-10">
+    <div class="container mt-10 relative">
       <div class="my-5 ml-20 md:mx-auto w-9/12">
         <h1 class="text-4xl mb-5 my-4 text-gray-500">
           Kalkulator BMI - co to jest?
@@ -186,7 +186,7 @@
       </div>
     </div>
     {% elif calc_what == 'BMI' %}
-    <div class="container mt-10">
+    <div class="container mt-10 relative">
       <div
         class="bg-gray-300 w-4/6 md:w-11/12 lg:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
       >
@@ -300,7 +300,7 @@
       {% endif %}
     </div>
     {% else %}
-    <div class="container mt-10">
+    <div class="container mt-10 relative">
       <div
       class="bg-gray-300 w-4/6 md:w-11/12 lg:mx-auto grid grid-cols-2 mx-auto rounded-t-lg h-32"
       >
@@ -531,13 +531,7 @@
       function Menu(e) {
         let list = document.querySelector('ul');
         let diver = document.getElementById('nav');
-        e.name === 'menu'
-          ? ((e.name = 'close'),
-            list.classList.add('md:left-0'),
-            list.classList.remove('md:left-[-100%]'))
-          : ((e.name = 'menu'),
-            list.classList.remove('md:left-0'),
-            list.classList.add('md:left-[-100%]'));
+        e.name === 'menu' ? (e.name = "close",list.classList.add('md:left-0'), document.body.classList.add('overflow-hidden'), list.classList.remove('md:left-[-100%]')) :( e.name = "menu" ,list.classList.remove('md:left-0'), document.body.classList.remove('overflow-hidden'), list.classList.add('md:left-[-100%]'));
       }
     </script>
   </body>
