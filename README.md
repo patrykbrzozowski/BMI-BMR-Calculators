@@ -1,3 +1,3 @@
 # BMI/BMR Calculators
 
-Live: https://bmi-bmr-calculators.herokuapp.com
+Technologies: Django, JavaScript, Tailwind CSS, CSS, HTML
